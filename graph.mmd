@@ -1,0 +1,19 @@
+%%{init: {'flowchart': {'curve': 'linear'}}}%%
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	agent([<p>agent</p>])
+	tools([<p>tools</p>])
+	grade_documents([<p>grade_documents</p>])
+	rewrite_query([<p>rewrite_query</p>])
+	__end__([<p>__end__</p>]):::last
+	__start__ --> agent;
+	agent -. "tool_calls présents" .-> tools;
+	agent -. "réponse directe" .-> __end__;
+	tools -. "retrieve_documents utilisé" .-> grade_documents;
+	tools -. "autre outil" .-> agent;
+	grade_documents -. "docs pertinents OU max rewrites" .-> agent;
+	grade_documents -. "docs non pertinents" .-> rewrite_query;
+	rewrite_query --> agent;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

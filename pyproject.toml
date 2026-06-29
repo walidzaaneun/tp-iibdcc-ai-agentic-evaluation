@@ -1,0 +1,27 @@
+[project]
+name = "agentic-rag-medical"
+version = "0.1.0"
+description = "Système RAG Agentique médical avec LangGraph - Maladies, Symptômes, Médicaments"
+requires-python = ">=3.10"
+dependencies = [
+    "langchain",
+    "langchain-ollama",
+    "langchain-community",
+    "langchain-huggingface",
+    "langchain-chroma",
+    "langchain-text-splitters",
+    "sentence-transformers",
+    "pypdf",
+    "langgraph",
+    "python-dotenv",
+    "chromadb",
+]
+
+[dependency-groups]
+dev = ["pytest", "pytest-cov"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
